@@ -1,0 +1,20 @@
+{
+  "name": "cr4f73d",
+  "version": "1.0.0",
+  "description": "Crafted website",
+  "main": "index.js",
+  "repository": "git@github.com:crftd/cr4f73d.git",
+  "author": "Crafted.",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "html-webpack-plugin": "^2.30.1",
+    "postcss-loader": "^2.0.6",
+    "pug": "^2.0.0-rc.4",
+    "pug-loader": "^2.3.0",
+    "webpack": "^3.6.0"
+  }
+}
