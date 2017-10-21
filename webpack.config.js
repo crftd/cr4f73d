@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sourcePath = `${__dirname}/src`;
@@ -5,6 +7,9 @@ const outputPath = `${__dirname}/dist`;
 const index = `${sourcePath}/index.pug`;
 const styles = `${sourcePath}/styles/main.pcss`;
 
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isProd = nodeEnv === 'production';
+const devServerPort = 3000;
 
 const extractStyles = new ExtractTextPlugin('[name].css');
 const extractHtml = new ExtractTextPlugin('[name].html');
@@ -22,7 +27,32 @@ const config = {
   entry: { index, styles },
   output: {
     path: outputPath,
+    publicPath: isProd ? '/dist/' : `//localhost:${devServerPort}/`,
     filename: '[name].js',
+  },
+  devServer: {
+    contentBase: sourcePath,
+    host: 'localhost',
+    publicPath: `//localhost:${devServerPort}/`,
+    port: devServerPort,
+    compress: isProd,
+    inline: !isProd,
+    hot: true,
+    stats: {
+      assets: true,
+      children: false,
+      chunks: true,
+      hash: false,
+      modules: false,
+      publicPath: false,
+      timings: true,
+      version: false,
+      warnings: true,
+      watchContentBase: true,
+      colors: {
+        green: '\u001b[32m',
+      },
+    },
   },
   module: {
     rules: [
@@ -71,5 +101,33 @@ const config = {
     extractHtml,
   ],
 };
+
+if (isProd) {
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      output: {
+        comments: false,
+      },
+    })
+  );
+} else {
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  );
+}
+
 
 module.exports = config;
