@@ -79,7 +79,8 @@ const config = {
           use: [
             {
               loader: 'css-loader',
-              query: {
+              options: {
+                minimize: isProd,
                 modules: false,
                 sourceMaps: true,
               },
@@ -92,7 +93,15 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: {
+            loader: 'css-loader',
+            options: {
+              minimize: isProd,
+            },
+          },
+        }),
       },
       {
         test: /\.woff$/,
