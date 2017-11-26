@@ -1,9 +1,32 @@
 @import 'normalize.css';
+@import './colors.pcss';
+
+@lost flexbox flex;
 
 html,
 body {
   background-color: #000;
   height: 100%;
+  color: $PRIMARY_COLOR;
+}
+
+a {
+  color: $SECONDARY_COLOR;
+  text-decoration: none;
+  outline-color: $PARAGRAPH_TITLE_FONT_COLOR;
+
+  &:hover {
+    color: $HOVER_COLOR;
+    border-bottom: 1px solid;
+  }
+
+  &:visited {
+    color: $VISITED_COLOR;
+  }
+
+  &:active {
+    color: $ACTIVE_COLOR;
+  }
 }
 
 .wrapper {
@@ -18,4 +41,79 @@ body {
 
 .footer {
   flex: 0 0 auto;
+}
+
+.paragraph__title {
+  lost-align: middle-right;
+
+  &-divider {
+    lost-column: 2/3;
+    height: 1px;
+    margin-top: 30px;
+    background-color: $PRIMARY_COLOR;
+  }
+
+  &-text {
+    lost-column: 1/3;
+    font: 272px 'Crimson Text';
+    color: $PARAGRAPH_TITLE_FONT_COLOR;
+    text-align: end;
+  }
+}
+
+.paragraph__content {
+  font: 67px 'Crimson Text';
+  line-height: 1.5;
+  padding: 0 60px;
+}
+
+.contacts {
+  lost-offset: 1/6 column;
+  lost-row: 2/6;
+  lost-column: 6/10;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    font: .7em Gilroy;
+  }
+}
+
+.join {
+  lost-offset: 1/6 column;
+  lost-row: 2/6;
+  lost-offset: 4/10 raw;
+  lost-column: 6/10;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__links {
+    font: .7em Gilroy;
+
+    &-devider {
+      padding: 0 20px;
+    }
+  }
+}
+
+.arrow-up {
+  lost-column: 1/5;
+  lost-offset: 8/10 raw;
+  lost-offset: 1/5 column;
+
+  &__icon {
+    content: '';
+    size: 50px 50px;
+    background: svg-load('../assets/icons/up-arrow.svg', fill=$PRIMARY_COLOR);
+    opacity: .5;
+    background-size: cover;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

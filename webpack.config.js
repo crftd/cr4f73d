@@ -94,6 +94,15 @@ const config = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
       },
+      {
+        test: /\.woff$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './fonts/[name].[ext]',
+          },
+        },
+      },
     ],
   },
   plugins: [
@@ -103,25 +112,23 @@ const config = {
 };
 
 if (isProd) {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true,
-      },
-      output: {
-        comments: false,
-      },
-    })
-  );
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false,
+      screw_ie8: true,
+      conditionals: true,
+      unused: true,
+      comparisons: true,
+      sequences: true,
+      dead_code: true,
+      evaluate: true,
+      if_return: true,
+      join_vars: true,
+    },
+    output: {
+      comments: false,
+    },
+  }));
 } else {
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
