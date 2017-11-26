@@ -27,7 +27,7 @@ const config = {
   entry: { index, styles },
   output: {
     path: outputPath,
-    publicPath: isProd ? '/' : `//localhost:${devServerPort}/`,
+    publicPath: isProd ? '/cr4f73d/' : `//localhost:${devServerPort}/`,
     filename: '[name].js',
   },
   devServer: {
