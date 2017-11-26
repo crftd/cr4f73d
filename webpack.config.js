@@ -103,6 +103,22 @@ const config = {
           },
         },
       },
+      {
+        test: /\.png$/,
+        use: [
+          'url-loader?limit=10000',
+          {
+            loader: 'img-loader',
+            options: {
+              enabled: true,
+              pngquant: {
+                floyd: 0.7,
+                speed: isProd ? 2 : 10,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

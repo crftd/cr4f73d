@@ -1,0 +1,28 @@
+@lost flexbox flex;
+@lost gutter 1px;
+
+html,
+body {
+  background-color: #000;
+  height: 100%;
+  color: $PRIMARY_COLOR;
+}
+
+a {
+  color: $SECONDARY_COLOR;
+  text-decoration: none;
+  outline-color: $PARAGRAPH_TITLE_FONT_COLOR;
+
+  &:hover {
+    color: $HOVER_COLOR;
+    border-bottom: 1px solid;
+  }
+
+  &:visited {
+    color: $VISITED_COLOR;
+  }
+
+  &:active {
+    color: $ACTIVE_COLOR;
+  }
+}

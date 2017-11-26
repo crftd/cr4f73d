@@ -7,7 +7,9 @@ module.exports = {
     require('postcss-inline-svg')({
       removeFill: true,
     }),
-    require('postcss-assets'),
+    require('postcss-assets')({
+      cachebuster: true,
+    }),
     require('postcss-short'),
     require('precss'),
     require('postcss-simple-vars'),

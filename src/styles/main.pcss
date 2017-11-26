@@ -1,33 +1,6 @@
 @import 'normalize.css';
 @import './colors.pcss';
-
-@lost flexbox flex;
-
-html,
-body {
-  background-color: #000;
-  height: 100%;
-  color: $PRIMARY_COLOR;
-}
-
-a {
-  color: $SECONDARY_COLOR;
-  text-decoration: none;
-  outline-color: $PARAGRAPH_TITLE_FONT_COLOR;
-
-  &:hover {
-    color: $HOVER_COLOR;
-    border-bottom: 1px solid;
-  }
-
-  &:visited {
-    color: $VISITED_COLOR;
-  }
-
-  &:active {
-    color: $ACTIVE_COLOR;
-  }
-}
+@import './reset.pcss';
 
 .wrapper {
   display: flex;
@@ -37,6 +10,48 @@ a {
 
 .landing {
   flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('../assets/img/Back.png') no-repeat right bottom;
+  overflow: hidden;
+
+  &__slogan {
+    flex-shrink: 1;
+    margin: auto auto 0;
+    max-width: 600px;
+    font: 83px 'Crimson Text';
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  @media (orientation: landscape) {
+    background-size: contain;
+  }
+}
+
+.arrow-down {
+  display: flex;
+  flex-shrink: 0;
+  flex-basis: 40%;
+
+  &__link {
+    margin: auto 0;
+  }
+
+  &__icon {
+    content: '';
+    size: 50px 50px;
+    background: svg-load('../assets/icons/down-arrow.svg', fill=$PRIMARY_COLOR);
+    opacity: .5;
+    background-size: cover;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .footer {
@@ -84,7 +99,7 @@ a {
 .join {
   lost-offset: 1/6 column;
   lost-row: 2/6;
-  lost-offset: 4/10 raw;
+  lost-offset: 4/10 row;
   lost-column: 6/10;
 
   &__title {
@@ -102,7 +117,7 @@ a {
 
 .arrow-up {
   lost-column: 1/5;
-  lost-offset: 8/10 raw;
+  lost-offset: 8/10 row;
   lost-offset: 1/5 column;
 
   &__icon {
