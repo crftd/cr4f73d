@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "lint:styles": "stylelint ./src/styles/*.pcss",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",

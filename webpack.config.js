@@ -27,7 +27,7 @@ const config = {
   entry: { index, styles },
   output: {
     path: outputPath,
-    publicPath: isProd ? '/dist/' : `//localhost:${devServerPort}/`,
+    publicPath: isProd ? '/' : `//localhost:${devServerPort}/`,
     filename: '[name].js',
   },
   devServer: {
@@ -99,7 +99,7 @@ const config = {
         use: {
           loader: 'file-loader',
           options: {
-            name: './fonts/[name].[ext]',
+            name: 'fonts/[name].[ext]',
           },
         },
       },
