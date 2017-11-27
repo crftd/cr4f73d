@@ -10,9 +10,15 @@ module.exports = {
     require('postcss-assets')({
       cachebuster: true,
     }),
+    require('precss')({
+      selectors: true,
+      mixinsDir: './src/styles/mixins',
+    }),
+    require('postcss-random'),
+    require('postcss-calc')({
+      selectors: true,
+    }),
     require('postcss-short'),
-    require('precss'),
-    require('postcss-simple-vars'),
     require('postcss-clearfix'),
     require('postcss-cssnext')({}),
     require('postcss-font-magician')({

@@ -1,0 +1,47 @@
+@define-mixin glitch $top, $right, $bottom, $left, $width, $height, $first-color, $second-color, $shadow-offset {
+
+  $steps: 20;
+  $glitch-height: 5px;
+
+  @at-root {
+    @keyframes noise-animation-before {
+      @for $i from 0 to $steps {
+      calc(100 * $i / $steps)% {
+          $offset-top: random(0, $height)px;
+          $offset-bottom: calc($(offset-top) - $(glitch-height));
+          clip-path: inset($offset-top 0 $offset-bottom 0);
+        }
+      }
+    }
+
+    @keyframes noise-animation-after {
+      @for $i from 0 to $steps {
+      calc(100 * $i / $steps)% {
+          $offset-top: random(0, $height)px;
+          $offset-bottom: calc($(offset-top) - $(glitch-height));
+          clip-path: inset($offset-top 0 $offset-bottom 0);
+        }
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute $top $left;
+    color: #fff;
+    background: #000;
+    overflow: hidden;
+    clip-path: inset($height 0 0 0);
+  }
+
+  &::before {
+    text-shadow: -$(shadow-offset) 0 $first-color;
+    animation: noise-animation-before 2s infinite linear alternate-reverse;
+  }
+
+  &::after {
+    text-shadow: $(shadow-offset) 0 $second-color;
+    animation: noise-animation-after 2s infinite linear alternate-reverse;
+  }
+}

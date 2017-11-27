@@ -1,7 +1,6 @@
 @import 'normalize.css';
 @import './colors.pcss';
 @import './reset.pcss';
-@import './glitch.pcss';
 
 .header {
   position: fixed;
@@ -16,6 +15,13 @@
   &__logo {
     margin-left: 57px;
     font: 600 39px Gilroy;
+
+    &-dva {
+      margin-left: 57px;
+      font: 600 39px Gilroy;
+
+      @add-mixin glitch 52px, 0, 0, 54px, 3000px, 48px, #f00, #00f, 1px;
+    }
   }
 }
 
