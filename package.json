@@ -11,6 +11,9 @@
     "lint:styles": "stylelint ./src/styles/*.pcss",
     "build": "NODE_ENV=production webpack"
   },
+  "engines": {
+    "node": ">=10.7"
+  },
   "devDependencies": {
     "babel-eslint": "*",
     "css-loader": "*",
