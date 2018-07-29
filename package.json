@@ -46,6 +46,7 @@
     "stylelint-config-standard": "*",
     "url-loader": "*",
     "webpack": "*",
+    "webpack-cli": "*",
     "webpack-dev-server": "*"
   }
 }
